@@ -25,7 +25,10 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String item=(String) lv.getItemAtPosition(position);
-                Toast.makeText(getApplicationContext(), item, Toast.LENGTH_LONG).show();
+                Intent intent=new Intent(getApplicationContext(),UserDisplay.class);
+                intent.putExtra("uname", item);
+                startActivity(intent);
+//                Toast.makeText(getApplicationContext(), item, Toast.LENGTH_LONG).show();
             }
         });
         sbut.setOnClickListener(new View.OnClickListener() {
