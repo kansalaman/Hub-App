@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.TimeZone;
 
 public class UserDisplay extends AppCompatActivity {
     List<String> repo_names = new ArrayList<String>();
@@ -203,13 +204,14 @@ public class UserDisplay extends AppCompatActivity {
                     String cur_create = obj.optString("created_at").toString().substring(0, 10)+obj.optString("created_at").toString().substring(11, 19);
                     repo_names.add(cur_name);
                     descriptions.add(cur_desc);
-                    String final_date = new SimpleDateFormat("yyyy-MM-ddhh:mm:ss", Locale.getDefault()).format(new Date());
+//                    String final_date = new SimpleDateFormat("yyyy-MM-ddhh:mm:ss", Locale.getDefault()).format(new Date());
 //                    fd = cur_create;
-                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-ddhh:mm:ss");
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-ddHH:mm:ss");
                     // LocalDate now = LocalDate.now();
-
+                    formatter.setTimeZone(TimeZone.getTimeZone("GMT"));
                     Date in = new Date();
                     Date end = new Date();
+                    String final_date = formatter.format(end);
                     try {
                         in = formatter.parse(cur_create);
                         end = formatter.parse(final_date);

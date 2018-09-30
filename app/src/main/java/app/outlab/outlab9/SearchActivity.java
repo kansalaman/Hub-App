@@ -1,9 +1,11 @@
 package app.outlab.outlab9;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,6 +37,11 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(getApplicationContext(),"here",Toast.LENGTH_SHORT).show();
+                InputMethodManager inputManager = (InputMethodManager)
+                        getSystemService(Context.INPUT_METHOD_SERVICE);
+
+                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
                 String usearch=uname.getText().toString();
                 UserSearch usch=new UserSearch(SearchActivity.this,usearch,lv);
                 usch.execute();
