@@ -37,6 +37,7 @@ public class UserDisplay extends AppCompatActivity {
     List<String> ages = new ArrayList<String>();
 
     String uname;
+    private ListView lv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +46,11 @@ public class UserDisplay extends AppCompatActivity {
         Intent intent=getIntent();
         uname=intent.getStringExtra("uname");
 
-        ListView lv=(ListView) findViewById(R.id.listview);
+        lv=(ListView) findViewById(R.id.listview);
 
         UserInfo unf = new UserInfo();
         unf.execute();
-        customAdapter adapter = new customAdapter();
-        lv.setAdapter(adapter);
+
 
     }
     class customAdapter extends BaseAdapter {
@@ -96,14 +96,14 @@ public class UserDisplay extends AppCompatActivity {
 //            this.description=d;
 //            this.age=a;
 //        }
-
+        String strjson=new String("hello");
         @Override
         protected Void doInBackground(Void... voids) {
 //            Toast.makeText(getApplicationContext(), uname, Toast.LENGTH_LONG).show();
 //            SystemClock.sleep(5000);
 
             String urlname =  "https://api.github.com/search/repositories?q=user:" + uname;
-            String strjson=new String("hello");
+
 
             try {
                 URL urls = new URL(urlname);
@@ -179,7 +179,8 @@ public class UserDisplay extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-
+            customAdapter adapter = new customAdapter();
+            lv.setAdapter(adapter);
         }
 
 
