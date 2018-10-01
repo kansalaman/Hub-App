@@ -177,8 +177,10 @@ public class UserDisplay extends AppCompatActivity {
                 pname = jsonRootObject.optString("login");
                 Log.d("connectiondebug",pname);
                 pcomp = jsonRootObject.optString("company");
+                if(pcomp=="null") pcomp = "-";
                 Log.d("connectiondebug","pcomp: "+ pcomp);
                 ploc = jsonRootObject.optString("location");
+                if(ploc=="null") ploc = "-";
                 Log.d("connectiondebug",ploc);
             }
             catch (JSONException e){
@@ -199,7 +201,7 @@ public class UserDisplay extends AppCompatActivity {
                     String cur_desc = obj.optString("description").toString();
                     if (cur_desc == "null")
                     {
-                        cur_desc = "No desc available";
+                        cur_desc = "-";
                     }
                     String cur_create = obj.optString("created_at").toString().substring(0, 10)+obj.optString("created_at").toString().substring(11, 19);
                     repo_names.add(cur_name);

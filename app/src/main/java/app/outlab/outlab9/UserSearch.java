@@ -38,7 +38,7 @@ public class UserSearch extends AsyncTask<Void,Void,List<String>> {
     @Override
     protected List<String> doInBackground(Void... voids) {
         List<String> results = new ArrayList<String>();
-        String urlname = "https://api.github.com/search/users?q=" + name + "&sort=repositories&order=desc";
+        String urlname = "https://api.github.com/search/users?q=" + name + "+in:login&sort=repositories&order=desc";
         String strjson=new String("hello");
         try {
             URL urls = new URL(urlname);
