@@ -89,6 +89,7 @@ public class UserSearch extends AsyncTask<Void,Void,List<String>> {
     protected void onPostExecute(List<String> names) {
         String[] narr=new String[names.size()];
         narr=names.toArray(narr);
+        Toast.makeText(context, "Completed Search", Toast.LENGTH_SHORT).show();
         final ArrayAdapter<String> adapter=new ArrayAdapter<String>(context,android.R.layout.simple_list_item_1,narr);
         lev.setAdapter(adapter);
     }
